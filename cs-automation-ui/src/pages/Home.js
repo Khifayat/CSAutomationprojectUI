@@ -8,7 +8,7 @@ function Home() {
     const [posts, setPosts] = useState([])
 
     const getPosts = async () => {
-        const response = await httpmain.get('/approved')
+        const response = await httpmain.get('/post/approved')
         setPosts(response.data)
     }
     useEffect(() => {
