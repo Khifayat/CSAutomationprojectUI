@@ -8,7 +8,7 @@ const PostsCard = ({post}) =>{
         <div class="card-body">
           <h3>{post.title}</h3>
           <p>{post.description}</p>
-          <p>{post.creationDate}</p>
+          <p align = "right">{post.creationDateTime.substring(0, 10)}</p>
           <p>{post.author}</p>
         </div>
       </div>
