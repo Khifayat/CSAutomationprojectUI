@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import AppNavbar from "../components/AppNavbar";
 import PostsCard from "../components/PostsCard";
-import httpmain from "../services/httpclientmain/httpmain"
+import postFunctions from "../services/dbservices/postservices/PostFunctions";
 
 function Home() {
 
     const [posts, setPosts] = useState([])
 
     const getPosts = async () => {
-        const response = await httpmain.get('/post/approved')
+        const response = await postFunctions.getApprovedPosts()
         setPosts(response.data)
     }
     useEffect(() => {

@@ -4,6 +4,10 @@ const getAllPosts = () => {
     return httpClient.get(`/post/all`)
 }
 
+const getApprovedPosts = () =>{
+    return httpClient.get(`/post/approved`)
+}
+
 const getPostById = postId =>{
     return httpClient.get(`/post/${postId}`)
 }
@@ -24,9 +28,9 @@ const deletePost = postId => {
     return httpClient.delete(`/post/delete`, postId)
 }
 
-const foodFunctions = {
-    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts
+const postFunctions = {
+    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts
 }
 
 
-export default foodFunctions
+export default postFunctions
