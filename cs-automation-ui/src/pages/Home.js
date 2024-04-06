@@ -9,7 +9,13 @@ function Home() {
 
   const getPosts = async()=>{
       let response = await getLatestPosts()
-      setPosts(response.data)
+                        .then(function(response){
+                            return response.data
+                        })
+                        .catch(function(error){
+                            console.log(error)
+                        })
+      setPosts(response)
   }
   useEffect(()=>{
       getPosts().then(r => {})

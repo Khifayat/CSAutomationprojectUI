@@ -29,7 +29,7 @@ const deletePost = postId => {
 }
 
 const postFunctions = {
-    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts
+    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts
 }
 
 

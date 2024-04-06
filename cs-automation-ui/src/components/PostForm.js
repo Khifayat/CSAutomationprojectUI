@@ -18,10 +18,10 @@ function PostForm() {
     const [postDescription, setPostDescription] = useState()
     const [postImgURL, setPostImgURL] = useState()
     const [validated, setValidated] = useState(false)
+    
     const handleTitleChange = (e) => setPostTitle(e.target.value)
     const handleDescriptionChange = (e) => setPostDescription(e.target.value)
     const handleImageChange = (e) => setPostImgURL(e.target.value)
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
