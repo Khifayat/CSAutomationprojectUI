@@ -1,0 +1,23 @@
+.my-modal .modal-content {
+    background-color: #154734;
+    color: gold;
+}
+
+.my-modal .modal-backdrop{
+    background-color: gold;
+}
+
+.add-post-button{
+    color: gold;
+    background-color: #154734;
+}
+
+.input-field{
+    border-color: gold;
+}
+.form-label{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
