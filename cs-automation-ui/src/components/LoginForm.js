@@ -20,7 +20,6 @@ function LoginForm(props) {
         user.userName = userUserName
         user.password = userPassword
         console.log(user)
-        let alertUser = "alerter"
         await UserFunctions.loginUser(user)
             .then((res) => {
                 if(res != null){

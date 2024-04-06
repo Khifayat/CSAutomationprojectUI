@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../css/Registration.css'
 import UserFunctions from '../services/dbservices/userservices/UserFunctions'
 
-function RegistrationForm(props) {
+function RegistrationForm() {
 
     const user = {
         firstName: "",
