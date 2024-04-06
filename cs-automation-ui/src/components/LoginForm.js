@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../css/Registration.css'
 import UserFunctions from '../services/dbservices/userservices/UserFunctions'
 
-function RegistrationForm(props) {
+function LoginForm(props) {
 
     const user = {
         firstName: "",
@@ -34,23 +34,23 @@ function RegistrationForm(props) {
 
         let alertUser = "alerter"
         await UserFunctions.registerUser(user)
-            .then((res) => {
-                if (res != null) {
-                    if (res.data != null) {
-                        alertUser = res.data
-                        alert("your user name is "+alertUser.userName)
-                        console.log(res.data)
-                    }else{
-                        alert("username already exist")
-                    }
-                }
-            })
             .catch(function (error) {
                 if (error) {
                     alert(error.response.data.fieldErrors[0].defaultMessage)
                     event.preventDefault()
                 } else {
                     console.log("no errors")
+                }
+            })
+            .then((res) => {
+                if(res.data != null){
+                    // console.log(res)
+                    alertUser = res.data
+                    alert(alertUser.userName)
+                    console.log(res)
+                }else{
+                    console.log(res)
+                    alert(user.userName + " already Exist, choose a different user name")
                 }
             })
     }
@@ -94,9 +94,7 @@ function RegistrationForm(props) {
                 </form>
             </div>
         </div>
-
-
     )
 }
 
-export default RegistrationForm
+export default LoginForm
