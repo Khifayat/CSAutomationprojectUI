@@ -12,7 +12,7 @@ const getPostById = postId =>{
     return httpClient.get(`/post/${postId}`)
 }
 
-const getLatestPosts = () => {
+export const getLatestPosts = () => {
     return httpClient.get(`/post/latest`)
 }
 
@@ -29,7 +29,7 @@ const deletePost = postId => {
 }
 
 const postFunctions = {
-    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts
+    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts
 }
 
 
