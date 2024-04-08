@@ -4,7 +4,7 @@ import {Col, Row} from "react-bootstrap";
 
 
 const QR = () =>{
-    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+    const baseUrl = process.env.REACT_APP_API_URL;
 
     console.log(baseUrl)
     // Append the specific route to the base URL
