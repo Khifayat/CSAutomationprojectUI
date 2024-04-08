@@ -1,12 +1,14 @@
 import React from "react";
 
 import RegistrationForm from "../components/RegistrationForm";
+import AppNavbar from "../components/AppNavbar";
 // import RegisterState from "./RegisterState"
 
 
-function RegistrationPage(){
+const RegistrationPage = ()  => {
     return(
         <div>
+            <AppNavbar isLobbyTv={false}/>
             <RegistrationForm/>
         </div>
     )

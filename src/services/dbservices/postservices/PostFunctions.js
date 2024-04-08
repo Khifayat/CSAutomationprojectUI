@@ -1,6 +1,6 @@
 import httpClient from "../../httpclientmain/httpmain"
 
-const getAllPosts = () => {
+export const getAllPosts = () => {
     return httpClient.get(`/post/all`)
 }
 

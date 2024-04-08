@@ -3,7 +3,7 @@ import AppNavbar from "../components/AppNavbar";
 import PostsCard from "../components/PostsCard";
 import {getLatestPosts} from "../services/dbservices/postservices/PostFunctions";
 
-function Home() {
+function Mobile() {
 
     const [posts, setPosts] = useState([])
 
@@ -23,7 +23,7 @@ function Home() {
   return(
       <>
       <div style={{ width:"100%", height:"100%"}}>
-      <AppNavbar/>
+      <AppNavbar isLobbyTv={false}/>
       {posts?.map((post)=>
       <PostsCard post = {post}/>)}
       </div>
@@ -31,4 +31,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default Mobile;

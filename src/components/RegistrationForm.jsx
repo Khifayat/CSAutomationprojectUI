@@ -56,7 +56,7 @@ function RegistrationForm() {
     }
 
     return (
-        <div className='container'>
+        <div className='container '>
             <div className='center'>
                 {/* <form className="center" onSubmit={(e) => dispatch(register(e))} onReset={(e) => dispatch(cancelregister(e))}> */}
                 <form className="center" onSubmit={handleSubmit}>

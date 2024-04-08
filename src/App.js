@@ -4,27 +4,23 @@ import {
     Route
 } from 'react-router-dom';
 
-import Home from "./pages/Home";
-// import RegistrationPage from "./pages/RegistrationPage";
-// import Home from './pages/Home'
-// import LoginPage from './pages/LoginPage'
+import Mobile from "./pages/Mobile";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from './pages/LoginPage'
 import UserDashboardPage from './pages/UserDashboardPage'
+import Lobby from "./pages/Lobby";
 
 function App() {
   return (
       <Router>
           <Routes>
-              <Route path="/" element={<Home/>} />
-              {/*<Route path="/about" element={<About />} />*/}
-              {/*<Route path="/contact" element={<Contact />} />*/}
+              <Route path="/lobby" element={<Lobby/>} />
+              <Route path="/mobile" element={<Mobile/>} />
+              <Route path="/register" element={<RegistrationPage/> } />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={<UserDashboardPage/>} />
           </Routes>
       </Router>
-    // <div >
-    //     {/* <RegistrationPage/> */}
-    //     {/* <Home/> */}
-    //     {/* <LoginPage/> */}
-    //     <UserDashboardPage/>
-    // </div>
   );
 }
 

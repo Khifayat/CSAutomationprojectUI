@@ -41,7 +41,7 @@ function LoginForm(props) {
     }
 
     return (
-        <div className='container'>
+        <div className='container '>
             <div className='center'>
                 <form className="center" onSubmit={handleSubmit}>
                     <h1>LOG IN</h1>
