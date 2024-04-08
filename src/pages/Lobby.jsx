@@ -3,6 +3,7 @@ import Carousel from 'react-material-ui-carousel';
 import PostsCard from '../components/PostsCard';
 import {getAllPosts, getLatestPosts} from '../services/dbservices/postservices/PostFunctions';
 import AppNavbar from "../components/AppNavbar";
+import QR from "../components/Qr";
 
 const Lobby = () => {
     const [posts, setPosts] = useState([]);
@@ -30,6 +31,7 @@ const Lobby = () => {
                     <p>No posts available</p>
                 )}
             </Carousel>
+            <QR/>
         </>
     );
 };
