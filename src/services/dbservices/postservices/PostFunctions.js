@@ -4,7 +4,7 @@ export const getAllPosts = () => {
     return httpClient.get(`/post/all`)
 }
 
-const getApprovedPosts = () =>{
+export const getApprovedPosts = () =>{
     return httpClient.get(`/post/approved`)
 }
 

@@ -14,6 +14,7 @@ function App() {
   return (
       <Router>
           <Routes>
+              <Route path="/" element={<Mobile/>} />
               <Route path="/lobby" element={<Lobby/>} />
               <Route path="/mobile" element={<Mobile/>} />
               <Route path="/register" element={<RegistrationPage/> } />
