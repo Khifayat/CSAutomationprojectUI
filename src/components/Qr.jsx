@@ -8,6 +8,7 @@ const QR = () =>{
         ? 'http://localhost:3000'
         : 'https://cs-automation-ui-4f36a195004b.herokuapp.com';  // Your production URL
 
+    console.log(baseUrl)
     // Append the specific route to the base URL
     const fullPath = `${baseUrl}/mobile`;
 
