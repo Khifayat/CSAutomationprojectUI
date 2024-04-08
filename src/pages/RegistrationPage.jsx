@@ -2,14 +2,21 @@ import React from "react";
 
 import RegistrationForm from "../components/RegistrationForm";
 import AppNavbar from "../components/AppNavbar";
-// import RegisterState from "./RegisterState"
 
 
 const RegistrationPage = ()  => {
+    const loggedInUser = JSON.parse(localStorage.getItem("user"))
     return(
         <div>
             <AppNavbar isLobbyTv={false}/>
-            <RegistrationForm/>
+            {(loggedInUser != null) ? (
+                <h1>You have already registered and logged in</h1>
+            ) : (
+                <div>
+                    <RegistrationForm/>
+                </div>
+            )}
+            
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, {Suspense, useEffect, useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import PostsCard from '../components/PostsCard';
-import {getAllPosts, getLatestPosts} from '../services/dbservices/postservices/PostFunctions';
+import {getLatestPosts} from '../services/dbservices/postservices/PostFunctions';
 import AppNavbar from "../components/AppNavbar";
 import QR from "../components/Qr";
 

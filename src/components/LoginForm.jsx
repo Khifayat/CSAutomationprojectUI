@@ -19,13 +19,14 @@ function LoginForm(props) {
         event.preventDefault()
         user.userName = userUserName
         user.password = userPassword
-        console.log(user)
         await UserFunctions.loginUser(user)
             .then((res) => {
                 if(res != null){
                     if(res.data != null){
-                        alert("log in successful")
+                        localStorage.setItem('user', JSON.stringify(res.data))
+                        window.location.replace("/dashboard")
                     }else{
+                        console.log(res)
                         alert("UserName and password combination not found")
                     }
                 }

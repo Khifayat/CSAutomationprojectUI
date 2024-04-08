@@ -32,6 +32,7 @@ function PostForm() {
     }
 
     async function handleAddPost(event) {
+        //check if form is valid
         const form = event.currentTarget
         if (form.checkValidity() === false) {
             event.preventDefault()
@@ -86,7 +87,7 @@ function PostForm() {
                         </Form.Group>
                         <br></br>
                         <Modal.Footer>
-                            <Button variant="secondary" type = "reset" onClick={handleClose}>
+                            <Button variant="secondary" onClick={handleClose}>
                                 Cancel
                             </Button>
                             <Button variant="primary" type='submit' >Submit</Button>

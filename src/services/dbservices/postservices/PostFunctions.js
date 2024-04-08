@@ -28,8 +28,12 @@ const deletePost = postId => {
     return httpClient.delete(`/post/delete`, postId)
 }
 
+const getPostsBy = authorId =>{
+    return httpClient.get(`/post/by/${authorId}`)
+}
+
 const postFunctions = {
-    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts
+    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts, getPostsBy
 }
 
 
