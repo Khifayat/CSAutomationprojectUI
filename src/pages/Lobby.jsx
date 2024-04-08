@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import PostsCard from '../components/PostsCard';
 import {getAllPosts, getLatestPosts} from '../services/dbservices/postservices/PostFunctions';
@@ -23,6 +23,8 @@ const Lobby = () => {
 
     return (
         <>
+            < Suspense fallback={<div>Loading...</div>}>
+
             <AppNavbar isLobbyTv={true}/>
             <Carousel autoPlay={true} interval={10000} animation={'slide'}>
                 {posts && posts.length > 0 ? (
@@ -32,6 +34,7 @@ const Lobby = () => {
                 )}
             </Carousel>
             <QR/>
+            </Suspense>
         </>
     );
 };

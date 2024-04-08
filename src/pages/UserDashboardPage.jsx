@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import AppNavbar from "../components/AppNavbar";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import {getApprovedPosts, getLatestPosts} from "../services/dbservices/postservices/PostFunctions";
 import PostsCard from "../components/PostsCard";
 
@@ -46,6 +46,7 @@ export default function UserDashboardPage(posts) {
   return (
       <>
         <AppNavbar isLobbyTv={false}/>
+        < Suspense fallback={<div>Loading...</div>}>
         <Box sx={{ width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -65,6 +66,7 @@ export default function UserDashboardPage(posts) {
             <TabPanel value="3">Item Three</TabPanel>
           </TabContext>
         </Box>
+        </Suspense>
       </>
 
   );

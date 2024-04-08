@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import AppNavbar from "../components/AppNavbar";
 import PostsCard from "../components/PostsCard";
 import {getLatestPosts} from "../services/dbservices/postservices/PostFunctions";
@@ -23,9 +23,11 @@ function Mobile() {
   return(
       <>
       <div style={{ width:"100%", height:"100%"}}>
-      <AppNavbar isLobbyTv={false}/>
+          < Suspense fallback={<div>Loading...</div>}>
+          <AppNavbar isLobbyTv={false}/>
       {posts?.map((post)=>
       <PostsCard post = {post}/>)}
+          </Suspense>
       </div>
       </>
   )
