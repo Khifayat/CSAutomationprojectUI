@@ -4,8 +4,7 @@ import {Col, Row} from "react-bootstrap";
 
 
 const QR = () =>{
-    const baseUrl = process.env.NODE_ENV === 'production'
-        ? 'https://cs-automation-ui-4f36a195004b.herokuapp.com': 'http://localhost:3000';
+    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 
     console.log(baseUrl)
     // Append the specific route to the base URL
