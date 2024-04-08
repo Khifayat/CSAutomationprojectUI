@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 const PostsCard = ({post}) =>{  
-  console.log(post.title)
     return (
       
         <div style={{backgroundColor:"#c8c9c7", border:"solid #D29F13", minHeight:"600px", height:"600px"}} class="card shadow p-3 ml-1">
