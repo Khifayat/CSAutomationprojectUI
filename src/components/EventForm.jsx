@@ -38,7 +38,6 @@ function PostForm() {
             event.preventDefault()
             event.stopPropagation()
         }
-        event.preventDefault()
         setValidated(true)
         handleClose()
         await postFunctions.addPost(post, "")
@@ -58,7 +57,7 @@ function PostForm() {
     return (
         <>
             <Button variant="primary" onClick={handleShow} className='add-post-button' >
-                Add Post
+                Add New Event
             </Button>
 
             <Modal
@@ -69,13 +68,13 @@ function PostForm() {
                 validationPost={post}
             >
                 <Modal.Header closeButton color='red'>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>Add Event</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form validated={validated} onSubmit={handleAddPost}>
                         <Form.Group>
                             <Form.Label className='form-label'>Title</Form.Label>
-                            <Form.Control pattern="\s*(\S\s*){6,}" required type="text" onChange={handleTitleChange} value={postTitle} placeholder="Post Title" className='input-field' />
+                            <Form.Control pattern="\s*(\S\s*){6,}" required type="text" onChange={handleTitleChange} value={postTitle} placeholder="Event Title" className='input-field' />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='form-label'>Description</Form.Label>
@@ -85,9 +84,21 @@ function PostForm() {
                             <Form.Label className='form-label'>Image URL</Form.Label>
                             <Form.Control type="text" onChange={handleImageChange} value={postImgURL} placeholder="name input" className='input-field' />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label className='form-label'>Address/Room Number</Form.Label>
+                            <Form.Control pattern="\s*(\S\s*){6,}" required type="text" onChange={handleTitleChange} value={postTitle} placeholder="Room Number" className='input-field' />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className='form-label'>Date</Form.Label>
+                            <Form.Control pattern="\s*(\S\s*){6,}" required type="text" onChange={handleTitleChange} value={postTitle} placeholder="Event Date" className='input-field' />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className='form-label'>Start Time</Form.Label>
+                            <Form.Control pattern="\s*(\S\s*){6,}" required type="number" onChange={handleTitleChange} value={postTitle} placeholder="Start Time" className='input-field' />
+                        </Form.Group>
                         <br></br>
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
+                            <Button variant="secondary" type='reset' onClick={handleClose}>
                                 Cancel
                             </Button>
                             <Button variant="primary" type='submit' >Submit</Button>

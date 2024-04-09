@@ -23,7 +23,7 @@ function LoginForm(props) {
             .then((res) => {
                 if(res != null){
                     if(res.data != null){
-                        localStorage.setItem('user', JSON.stringify(res.data))
+                        sessionStorage.setItem('user', JSON.stringify(res.data))
                         window.location.replace("/dashboard")
                     }else{
                         console.log(res)

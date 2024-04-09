@@ -7,6 +7,7 @@ import postFunctions from '../services/dbservices/postservices/PostFunctions';
 
 function PostForm() {
     //post DTO
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"))
     const post = {
         title: "",
         description: "",
@@ -40,7 +41,8 @@ function PostForm() {
         event.preventDefault()
         setValidated(true)
         handleClose()
-        await postFunctions.addPost(post, "")
+        console.log(loggedInUser.userId)
+        await postFunctions.addPost(post, loggedInUser.userId)
             .catch(function (error) {
                 if (error) {
                     console.log(error)

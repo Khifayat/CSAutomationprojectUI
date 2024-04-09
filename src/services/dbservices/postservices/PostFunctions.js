@@ -12,12 +12,18 @@ const getPostById = postId =>{
     return httpClient.get(`/post/${postId}`)
 }
 
+const getPendingPosts= () => {
+    return httpClient.get("/post/pending")
+}
+
 export const getLatestPosts = () => {
     return httpClient.get(`/post/latest`)
 }
 
 const addPost = (post, authorId) => {
-    return httpClient.post("/post/add", post, {URLSearchParams: authorId} )
+    return httpClient.post("/post/add", post, {params:{
+        authorId
+    }} )
 }
 
 const updateStatus = (postId, statusString) => {
@@ -33,7 +39,7 @@ const getPostsBy = authorId =>{
 }
 
 const postFunctions = {
-    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts, getPostsBy
+    addPost, deletePost, updateStatus, getLatestPosts, getPostById, getAllPosts, getApprovedPosts, getPostsBy, getPendingPosts
 }
 
 

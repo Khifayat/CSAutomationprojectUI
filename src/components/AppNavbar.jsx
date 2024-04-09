@@ -5,6 +5,13 @@ import React from "react";
 import GoldLogo from '../assets/GoldLogo.png'
 
 const AppNavbar = ({isLobbyTv}) => {
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"))
+    function handleLogout(){
+        console.log(loggedInUser)
+        sessionStorage.removeItem("user")
+        console.log(loggedInUser)
+    }
+
     return (
         <>
             <Navbar style={{ background: '#005844', height: '80px' }}>
@@ -26,7 +33,12 @@ const AppNavbar = ({isLobbyTv}) => {
                                 <>
                                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                                     <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                                    <Nav.Link as={Link} to="/login">login</Nav.Link>
+                                    {(loggedInUser === null) ?(
+                                        <Nav.Link as={Link} to="/login" >login</Nav.Link>
+                                    ):(
+                                        <Nav.Link as={Link} to="/login" onClick={handleLogout} >logout</Nav.Link>
+                                    ) }
+                                    
                                     <Nav.Link as={Link} to="/dashboard">Faculty</Nav.Link>
                                 </>
                             ): <></>}

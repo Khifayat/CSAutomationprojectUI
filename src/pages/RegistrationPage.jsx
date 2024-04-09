@@ -5,7 +5,7 @@ import AppNavbar from "../components/AppNavbar";
 
 
 const RegistrationPage = ()  => {
-    const loggedInUser = JSON.parse(localStorage.getItem("user"))
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"))
     return(
         <div>
             <AppNavbar isLobbyTv={false}/>

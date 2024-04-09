@@ -25,15 +25,30 @@ export default function UserDashboardPage() {
       deniedPosts.push(posts[i])
     }
   }
-  const loggedInUser = JSON.parse(localStorage.getItem("user"))
+  const loggedInUser = JSON.parse(sessionStorage.getItem("user"))
   const getPosts = async () => {
-    if (loggedInUser) {
-      console.log(loggedInUser)
+    if (loggedInUser && loggedInUser.role === "FACULTY") {
+      console.log(loggedInUser.role)
       await postFunctions.getPostsBy(loggedInUser.userId)
         .then((res) => {
           if (res != null) {
             if (res.data != null) {
               console.log("got the data")
+              setPosts(res.data)
+            }
+          }
+        })
+        .catch(function (error) {
+          if (error) {
+            console.log(error)
+          }
+        })
+    }else if(loggedInUser && loggedInUser.role === "ADMIN"){
+      await postFunctions.getPendingPosts()
+        .then((res) =>{
+          if(res != null){
+            if(res.data != null){
+              console.log("got the admin data")
               setPosts(res.data)
             }
           }
@@ -52,8 +67,8 @@ export default function UserDashboardPage() {
       < Suspense fallback={<div>Loading...</div>}>
         <div>
           {(loggedInUser === null) ? (
-            <h1 style={{ alignSelf: "center" }} >Hi</h1>
-          ) : (
+            <h1 style={{ alignSelf: "center" }} >You need to be logged in to view dashboard</h1>
+          ) : ((loggedInUser.role === "FACULTY") ? (
             <div
               style={{
                 background: "#154734",
@@ -106,11 +121,15 @@ export default function UserDashboardPage() {
                   </Tab>
                   <Tab eventKey="posts-denied" title="Denied Posts">
                     {deniedPosts?.map((post) =>
-                      <Dashboard post={post} />)}
+                      <Dashboard post={post}/>)}
                   </Tab>
                 </Tabs>
               </div>
             </div>
+          ) : (
+            <h1>{posts?.map((post) =>
+              <Dashboard post={post} />)}</h1>
+          )
           )}
         </div>
       </Suspense>
