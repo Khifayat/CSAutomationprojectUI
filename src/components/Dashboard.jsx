@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import postFunctions from '../services/dbservices/postservices/PostFunctions';
 
-function Dashboard({ post, role }) {
+function Dashboard({post, role}) {
 
   async function handStatusChange(event) {
     let statusString = event.target.value
@@ -26,7 +26,7 @@ function Dashboard({ post, role }) {
             <Button variant="outline-danger" value={"DENIED"} onClick={handStatusChange}>Decline</Button>{' '}
             <Button variant="outline-success"value={"APPROVED"} onClick={handStatusChange}>Accept</Button>{' '}
           </h1>
-        ) : (<h1></h1>)}</p>
+        ) : (<></>)}</p>
         {/*<p>{post.creationDate}</p>*/}
       </div>
     </div>

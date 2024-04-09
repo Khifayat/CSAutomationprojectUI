@@ -131,7 +131,6 @@ export default function UserDashboardPage() {
             <>{posts?.map((post) =>
               <Dashboard post={post} role={loggedInUser.role}
               />)}
-
             </>
           )
           )}

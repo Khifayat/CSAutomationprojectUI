@@ -37,9 +37,8 @@ function RegistrationForm() {
             .then((res) => {
                 if (res != null) {
                     if (res.data != null) {
-                        alertUser = res.data
-                        alert("your user name is "+alertUser.userName)
-                        console.log(res.data)
+                        sessionStorage.setItem('user', JSON.stringify(res.data))
+                        window.location.href ="/dashboard"
                     }else{
                         alert("username already exist")
                     }
