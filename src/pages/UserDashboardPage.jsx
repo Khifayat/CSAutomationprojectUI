@@ -43,11 +43,11 @@ export default function UserDashboardPage() {
             console.log(error)
           }
         })
-    }else if(loggedInUser && loggedInUser.role === "ADMIN"){
+    } else if (loggedInUser && loggedInUser.role === "ADMIN") {
       await postFunctions.getPendingPosts()
-        .then((res) =>{
-          if(res != null){
-            if(res.data != null){
+        .then((res) => {
+          if (res != null) {
+            if (res.data != null) {
               console.log("got the admin data")
               setPosts(res.data)
             }
@@ -65,21 +65,22 @@ export default function UserDashboardPage() {
     <>
       <AppNavbar isLobbyTv={false} />
       < Suspense fallback={<div>Loading...</div>}>
-        <div>
+        <div
+          style={{
+            background: "#154734",
+            color: "#D29F13",
+            textEmphasisColor: "#D29F13",
+            maxWidth: "60%",
+            margin: "0 auto",
+            align: "left",
+            alignSelf: "right",
+            justifyContent: "right"
+          }}>
           {(loggedInUser === null) ? (
-            <h1 style={{ alignSelf: "center" }} >You need to be logged in to view dashboard</h1>
+            <h1 style={{ alignSelf: "center" }} >  'You need to be logged in to view faculty dashboard'</h1>
           ) : ((loggedInUser.role === "FACULTY") ? (
             <div
-              style={{
-                background: "#154734",
-                color: "#D29F13",
-                textEmphasisColor: "#D29F13",
-                maxWidth: "60%",
-                margin: "0 auto",
-                align: "left",
-                alignSelf: "right",
-                justifyContent: "right"
-              }}>
+            >
               <div>
                 <div style={{
                   float: "left"
@@ -121,7 +122,7 @@ export default function UserDashboardPage() {
                   </Tab>
                   <Tab eventKey="posts-denied" title="Denied Posts">
                     {deniedPosts?.map((post) =>
-                      <Dashboard post={post}/>)}
+                      <Dashboard post={post} />)}
                   </Tab>
                 </Tabs>
               </div>
