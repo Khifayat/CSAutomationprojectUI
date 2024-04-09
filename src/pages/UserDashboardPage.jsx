@@ -128,8 +128,11 @@ export default function UserDashboardPage() {
               </div>
             </div>
           ) : (
-            <h1>{posts?.map((post) =>
-              <Dashboard post={post} />)}</h1>
+            <>{posts?.map((post) =>
+              <Dashboard post={post} role={loggedInUser.role}
+              />)}
+
+            </>
           )
           )}
         </div>

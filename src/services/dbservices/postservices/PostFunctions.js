@@ -27,7 +27,9 @@ const addPost = (post, authorId) => {
 }
 
 const updateStatus = (postId, statusString) => {
-    return httpClient.put(`/post/update`, postId, statusString)
+    return httpClient.put(`/post/updateStatus`, {}, {params:{
+        postId, statusString
+    }})
 }
 
 const deletePost = postId => {
