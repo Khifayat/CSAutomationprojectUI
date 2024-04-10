@@ -32,7 +32,6 @@ function RegistrationForm() {
         user.password = userPassword
         user.lastName = userLastName
 
-        let alertUser = "alerter"
         await UserFunctions.registerUser(user)
             .then((res) => {
                 if (res != null) {
