@@ -12,6 +12,7 @@ let stompClient
 const Lobby = () => {
 
     const [connected, setConnected] = useState(null);
+    const [loaded, setLoaded] = useState(false)
 
     async function connect() {
         let Sock = new SockJS('http://localhost:8080/websocket')
@@ -55,23 +56,22 @@ const Lobby = () => {
         try {
             const response = await getLatestPosts();
             setPosts(response.data);
+            setLoaded(true)
         } catch (error) {
             console.log(error);
         }
     };
 
     useEffect(() => {
-        getPosts();
         connect();
+        getPosts();
     }, []);
 
     return (
-        <>{(connected === true) ? (
-            
-                < Suspense fallback={<div>Loading...</div>}>
-                    
-                    <AppNavbar isLobbyTv={true} />
-                    <div>
+        <>{(connected === true && loaded === true) ? (
+            < Suspense fallback={<div>Loading...</div>}>
+                <AppNavbar isLobbyTv={true} />
+                <div>
                     <Carousel autoPlay={true} interval={10000} animation={'slide'}>
                         {posts && posts.length > 0 ? (
                             posts.map((item, i) => <PostsCard key={i} post={item} />)
@@ -79,11 +79,11 @@ const Lobby = () => {
                             <p>No posts available</p>
                         )}
                     </Carousel>
-                    </div>
-                    <QR />
-                </Suspense>
-            ) : (
-            <>awaiting connection with websocket</>
+                </div>
+                <QR />
+            </Suspense>
+        ) : (
+            <>loading ...</>
         )
         }
         </>
