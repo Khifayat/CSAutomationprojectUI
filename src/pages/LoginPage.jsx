@@ -10,7 +10,7 @@ function LoginPage() {
             <AppNavbar isLobbyTv={false} />
             < Suspense fallback={<div>Loading...</div>}>
                 {(loggedInUser === null) ? (
-                    <h1>You are already logged in</h1>
+                    <h1 className="loginError">You are already logged in</h1>
                 ) : (
                     <div>
                         <LoginForm />

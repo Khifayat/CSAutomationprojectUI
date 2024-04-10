@@ -77,7 +77,7 @@ export default function UserDashboardPage() {
             justifyContent: "right"
           }}>
           {(loggedInUser === null) ? (
-            <h1 style={{ alignSelf: "center" }} >  'You need to be logged in to view faculty dashboard'</h1>
+            <h1 className='loginError' >  You must be logged in to view faculty dashboard</h1>
           ) : ((loggedInUser.role === "FACULTY") ? (
             <div
             >

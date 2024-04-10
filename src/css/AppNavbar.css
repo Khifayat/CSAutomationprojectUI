@@ -9,7 +9,7 @@
       display: none; /* Hide hamburger icon on larger screens */
     }
     .mobile-navbar {
-        padding-right: 5px;
+        padding-right: 10px;
     }
 }
 
