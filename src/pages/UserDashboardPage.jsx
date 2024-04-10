@@ -8,10 +8,12 @@ import PostForm from '../components/PostForm'
 import EventForm from '../components/EventForm';
 import AppNavbar from '../components/AppNavbar';
 
+
 export default function UserDashboardPage() {
   useEffect(() => {
     getPosts()
   }, [])
+
   const [posts, setPosts] = useState([])
   let approvedPosts = []
   let deniedPosts = []

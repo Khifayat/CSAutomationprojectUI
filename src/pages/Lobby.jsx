@@ -13,6 +13,7 @@ const Lobby = () => {
 
     const [connected, setConnected] = useState(null);
     const [loaded, setLoaded] = useState(false)
+    const [posts, setPosts] = useState([]);
 
     async function connect() {
         let Sock = new SockJS('http://localhost:8080/websocket')
@@ -27,30 +28,27 @@ const Lobby = () => {
     }
 
     const onMessageReceived = (payload) => {
+        // console.log("new message")
         if (payload) {
             let payloadData = JSON.parse(payload.body)
-            if (payloadData.title != null) {
-                setPosts([...payloadData])
+            if (payloadData != null) {
+                setPosts(post => [payloadData, ...post])
+                console.log(posts.length)
+                setPosts((previousArr) => (previousArr.slice(0, -1)))   
             }
         }
-
-
     }
-
     const onError = (error) => {
         try {
             console.log(error)
         } catch {
             console.log(error)
         }
-
     }
 
     useEffect(() => {
         console.log("connectioned? : " + connected)
     }, connected)
-
-    const [posts, setPosts] = useState([]);
 
     const getPosts = async () => {
         try {

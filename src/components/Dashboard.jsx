@@ -2,17 +2,62 @@ import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import postFunctions from '../services/dbservices/postservices/PostFunctions';
 
-function Dashboard({post, role}) {
+import SockJS from 'sockjs-client';
+import { over } from 'stompjs';
+import { useState, useEffect } from 'react';
 
+let stompClient
+
+function Dashboard({post, role }) {
+  const [connected, setConnected] = useState(null);
   async function handStatusChange(event) {
     let statusString = event.target.value
-    // console.log(statusString)
-    // console.log(post.id)
     await postFunctions.updateStatus(post.id, statusString)
-      .catch(function(error){
+      .catch(function (error) {
         console.log(error)
       })
-    window.location.reload()
+      if(statusString === 'APPROVED'){
+        console.log("sending ... ")
+        sendValue()
+      }
+    // window.location.reload()
+  }
+
+  useEffect(()=>{
+    connect()
+  }, [])
+
+  async function connect() {
+    if (role === 'ADMIN') {
+      let Sock = new SockJS('http://localhost:8080/websocket')
+      stompClient = over(Sock)
+      await stompClient.connect({}, onConncted, onError)
+    }
+  }
+
+  const onError = (error) => {
+    try {
+      console.log(error)
+    } catch {
+      console.log(error)
+    }
+  }
+  const onConncted = () => {
+    setConnected(true)
+    stompClient.subscribe('/topic/public', onMessageReceived)
+    console.log("Connection succesful")
+  }
+  const onMessageReceived = (payload) => {
+    console.log("message has been received" + payload.data)
+    
+  }
+  const sendValue = () => {
+    if (stompClient && connected){
+      post.author = null
+      post.status = 'APPROVED'
+      console.log("sending " + JSON.stringify(post) +  "over websocket")
+      stompClient.send("/app/post.send", {}, JSON.stringify(post))
+    }
   }
 
   return (
@@ -24,7 +69,7 @@ function Dashboard({post, role}) {
         <p>{(role === "ADMIN") ? (
           <h1 align="right">
             <Button variant="outline-danger" value={"DENIED"} onClick={handStatusChange}>Decline</Button>{' '}
-            <Button variant="outline-success"value={"APPROVED"} onClick={handStatusChange}>Accept</Button>{' '}
+            <Button variant="outline-success" value={"APPROVED"} onClick={handStatusChange}>Accept</Button>{' '}
           </h1>
         ) : (<></>)}</p>
         {/*<p>{post.creationDate}</p>*/}
