@@ -1,20 +1,21 @@
+import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import React from "react";
 import GoldLogo from '../assets/GoldLogo.png'
+import '../css/AppNavbar.css'
 
-const AppNavbar = ({isLobbyTv}) => {
-    const loggedInUser = JSON.parse(sessionStorage.getItem("user"))
-    function handleLogout(){
-        console.log(loggedInUser)
-        sessionStorage.removeItem("user")
-        console.log(loggedInUser)
+const AppNavbar = ({ isLobbyTv }) => {
+    const [expanded, setExpanded] = useState(false);
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+
+    function handleLogout() {
+        sessionStorage.removeItem("user");
     }
 
     return (
         <>
-            <Navbar style={{ background: '#005844', height: '80px' }}>
+            <Navbar className="mobile-navbar" expanded={expanded} expand="lg" style={{ background: '#005844', height: '80px'}} onToggle={() => setExpanded(expanded ? false : "expanded")}>
                 <Navbar.Brand>
                     <img
                         src={GoldLogo}
@@ -25,31 +26,26 @@ const AppNavbar = ({isLobbyTv}) => {
                         style={{ paddingTop: '10px', paddingLeft: '5px' }}
                     />
                 </Navbar.Brand>
-                <div className={"ml-auto ms-sm-auto"} >
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                            {!isLobbyTv ? (
-                                <>
-                                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                                    <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                                    {(loggedInUser === null) ?(
-                                        <Nav.Link as={Link} to="/login" >login</Nav.Link>
-                                    ):(
-                                        <Nav.Link as={Link} to="/login" onClick={handleLogout} >logout</Nav.Link>
-                                    ) }
-                                    
-                                    <Nav.Link as={Link} to="/dashboard">Faculty</Nav.Link>
-                                </>
-                            ): <></>}
-                        </Nav>
-                    </Navbar.Collapse>
-
-                </div>
-
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ color: '#ffffff' }} />
+                <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapsed">
+                    <Nav className="ms-auto"> {}
+                        {!isLobbyTv && (
+                        <>
+                            <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>Home</Nav.Link>
+                            <Nav.Link as={Link} to="/register" onClick={() => setExpanded(false)}>Register</Nav.Link>
+                            {loggedInUser === null ? (
+                            <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>Login</Nav.Link>
+                            ) : (
+                            <Nav.Link as={Link} to="/login" onClick={() => { handleLogout(); setExpanded(false); }}>Logout</Nav.Link>
+                            )}
+                            <Nav.Link as={Link} to="/dashboard" onClick={() => setExpanded(false)}>Faculty</Nav.Link>
+                        </>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
             </Navbar>
         </>
-    )
-}
+    );
+};
 
-export default AppNavbar
+export default AppNavbar;

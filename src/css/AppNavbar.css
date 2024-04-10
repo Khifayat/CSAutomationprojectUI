@@ -1,0 +1,41 @@
+.mobile-navbar {
+    position: relative; 
+    z-index: 1030; 
+    padding-right: 0px;
+}
+  
+@media (min-width: 769px) {
+    .hamburger-menu {
+      display: none; /* Hide hamburger icon on larger screens */
+    }
+    .mobile-navbar {
+        padding-right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+      
+    }
+    .hamburger-menu {
+      display: block; /* Show hamburger icon on smaller screens */
+    }
+    .mobile-navbar {
+        padding-right: 0px;
+    }
+}
+
+.navbar-collapsed {
+    background-color: rgba(0,88,69, 0.95);
+    text-align: center;
+    padding-right: 0px; 
+}
+
+.nav-link {
+    color: #ffb81c; 
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ffffff; 
+}
+
