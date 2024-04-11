@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import '../css/PostFormModal.css'
 import postFunctions from '../services/dbservices/postservices/PostFunctions';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 function PostForm() {
     //post DTO
@@ -13,11 +15,13 @@ function PostForm() {
         imgURL: ""
     }
     //there is a better way, but i dont have time to figure it
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [selectedTime, setSelectedTime] = useState(null)
     const [postTitle, setPostTitle] = useState()
     const [postDescription, setPostDescription] = useState()
     const [postImgURL, setPostImgURL] = useState()
     const [validated, setValidated] = useState(false)
-    
+
     const handleTitleChange = (e) => setPostTitle(e.target.value)
     const handleDescriptionChange = (e) => setPostDescription(e.target.value)
     const handleImageChange = (e) => setPostImgURL(e.target.value)
@@ -50,7 +54,7 @@ function PostForm() {
                     setPostTitle("")
                 }
             })
-            
+
     }
     const handleShow = () => setShow(true);
 
@@ -90,11 +94,16 @@ function PostForm() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='form-label'>Date</Form.Label>
-                            <Form.Control pattern="\s*(\S\s*){6,}" required type="text" onChange={handleTitleChange} value={postTitle} placeholder="Event Date" className='input-field' />
+                            <br></br>
+                            <DatePicker
+                                selected={selectedDate}
+                                onChange={date => setSelectedDate(date)}
+                                dateFormat='yyyy-MM-dd'
+                                minDate={new Date()}
+                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='form-label'>Start Time</Form.Label>
-                            <Form.Control pattern="\s*(\S\s*){6,}" required type="number" onChange={handleTitleChange} value={postTitle} placeholder="Start Time" className='input-field' />
                         </Form.Group>
                         <br></br>
                         <Modal.Footer>

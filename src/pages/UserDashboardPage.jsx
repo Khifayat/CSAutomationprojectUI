@@ -114,25 +114,40 @@ export default function UserDashboardPage() {
                   <Tab eventKey="posts-pending"
                     title="Pending Posts"
                   >
-                    {pendingPosts?.map((post) =>
-                      <Dashboard post={post} />)}
+                    {(pendingPosts.length > 0) ?
+                      (<> {pendingPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are pending will show here</h1>
+                      )}
 
                   </Tab>
                   <Tab eventKey="posts-approved" title="Approved Posts">
-                    {approvedPosts?.map((post) =>
-                      <Dashboard post={post} />)}
+                    {(approvedPosts.length > 0) ?
+                      (<> {approvedPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are approved will show here</h1>
+                      )}
                   </Tab>
                   <Tab eventKey="posts-denied" title="Denied Posts">
-                    {deniedPosts?.map((post) =>
-                      <Dashboard post={post} />)}
+                    {(deniedPosts.length > 0) ?
+                      (<> {deniedPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are denied will show here</h1>
+                      )}
                   </Tab>
                 </Tabs>
               </div>
             </div>
           ) : (
-            <>{posts?.map((post) =>
-              <Dashboard post={post} role={loggedInUser.role}
-              />)}
+            <>{(posts.length > 0) ?
+              (<> {posts?.map((post) =>
+                <Dashboard post={post} />)}</>
+              ) : (
+                <h1>Posts that are denied will show here</h1>
+              )}
             </>
           )
           )}
