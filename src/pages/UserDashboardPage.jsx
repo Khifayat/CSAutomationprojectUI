@@ -144,9 +144,9 @@ export default function UserDashboardPage() {
           ) : (
             <>{(posts.length > 0) ?
               (<> {posts?.map((post) =>
-                <Dashboard post={post} />)}</>
+                <Dashboard post={post} role = "ADMIN" />)}</>
               ) : (
-                <h1>Posts that are denied will show here</h1>
+                <h1>Posts that are pending will show here</h1>
               )}
             </>
           )

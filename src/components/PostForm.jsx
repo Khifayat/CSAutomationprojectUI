@@ -52,6 +52,7 @@ function PostForm() {
                     setPostTitle("")
                 }
             })
+        window.location.reload()
             
     }
     const handleShow = () => setShow(true);

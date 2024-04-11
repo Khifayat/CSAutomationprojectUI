@@ -20,7 +20,7 @@ function Dashboard({post, role }) {
         console.log("sending ... ")
         sendValue()
       }
-    // window.location.reload()
+    window.location.reload()
   }
 
   useEffect(()=>{
