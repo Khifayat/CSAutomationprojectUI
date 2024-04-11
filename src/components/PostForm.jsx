@@ -41,15 +41,13 @@ function PostForm() {
         event.preventDefault()
         setValidated(true)
         handleClose()
-        console.log(loggedInUser.userId)
         await postFunctions.addPost(post, loggedInUser.userId)
             .catch(function (error) {
                 if (error) {
                     console.log(error)
+                    setShow(true)
                 } else {
-                    setPostDescription("")
-                    setPostImgURL("")
-                    setPostTitle("")
+                    window.location.reload()
                 }
             })
             
