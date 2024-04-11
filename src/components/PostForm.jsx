@@ -70,7 +70,7 @@ function PostForm() {
                 validationPost={post}
             >
                 <Modal.Header closeButton color='red'>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>New Post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form validated={validated} onSubmit={handleAddPost}>
@@ -80,18 +80,18 @@ function PostForm() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='form-label'>Description</Form.Label>
-                            <Form.Control pattern="\s*(\S\s*){6,}" required as="textarea" onChange={handleDescriptionChange} value={postDescription} placeholder="description" className='input-field' size='lg' />
+                            <Form.Control pattern="\s*(\S\s*){6,}" required as="textarea" onChange={handleDescriptionChange} value={postDescription} placeholder="Description" className='input-field' size='lg' />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className='form-label'>Image URL</Form.Label>
-                            <Form.Control type="text" onChange={handleImageChange} value={postImgURL} placeholder="name input" className='input-field' />
+                            <Form.Control type="text" onChange={handleImageChange} value={postImgURL} placeholder="Image URL" className='input-field' />
                         </Form.Group>
                         <br></br>
                         <Modal.Footer>
-                            <Button variant="secondary" type = "reset" onClick={handleClose}>
+                            <Button variant="secondary" type = "reset" onClick={handleClose} className="cancel-btn">
                                 Cancel
                             </Button>
-                            <Button variant="primary" type='submit' >Submit</Button>
+                            <Button variant="primary" type='submit' className="submit-btn">Submit</Button>
                         </Modal.Footer>
                     </Form>
                 </Modal.Body>

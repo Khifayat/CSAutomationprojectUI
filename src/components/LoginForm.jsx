@@ -58,7 +58,7 @@ function LoginForm(props) {
                     <button type='submit' id='submit'>SUBMIT</button><br></br>
                     <button type="reset" id='reset'>CANCEL</button><br></br>
                     <div class="login_link">
-                        Don't have an account? <a href="/regist">Register Here</a>
+                        Don't have an account? <a href="/register">Register Here</a>
                     </div>
                 </form>
             </div>
