@@ -1,19 +1,34 @@
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
 .my-modal .modal-content {
     background-color: #154734;
-    color: gold;
+    color: #ffb81c ;
 }
 
 .my-modal .modal-backdrop{
-    background-color: gold;
+    background-color: #ffb81c ;
 }
 
 .add-post-button{
-    color: black;
-    background-color: gold;
+    color:#154734;
+    background-color: #ffb81c ;
 }
 
+.add-post-button:hover{
+    color:#154734;
+    background-color: white ;
+}
+
+
 .input-field{
-    border-color: gold;
+    border-color: #ffb81c ;
 }
 .form-label{
     align-self: center;
@@ -21,3 +36,30 @@
     align-content: center;
     text-align: center;
 }
+
+.my-modal .submit-btn {
+    background-color: #ffb81c ; 
+    
+}
+
+.my-modal .submit-btn:hover {
+    background-color: white; 
+    color:#154734;
+}
+
+.my-modal .cancel-btn {
+    background-color: #ffb81c ; 
+    
+}
+
+.my-modal .cancel-btn:hover {
+    background-color: white; 
+    color:#154734;
+    
+}
+
+.form-label {
+    padding-top: 7px;
+}
+
+
