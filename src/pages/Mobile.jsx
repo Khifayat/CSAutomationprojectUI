@@ -5,7 +5,7 @@ import { getLatestPosts } from "../services/dbservices/postservices/PostFunction
 
 function Mobile() {
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState(null)
 
     const getPosts = async () => {
         let response = await getLatestPosts()
@@ -25,8 +25,20 @@ function Mobile() {
             <div style={{ width: "100%", height: "100%" }}>
                 < Suspense fallback={<div>Loading...</div>}>
                     <AppNavbar isLobbyTv={false} />
-                    {posts?.map((post) =>
-                        <PostsCard post={post} />)}
+                    {(posts == null) ?
+                        (<>loading ...</>) :
+                        (<>
+                            {(posts.length > 0) ?
+                                (<>
+                                    {posts?.map((post) =>
+                                        <PostsCard post={post} />)}
+                                </>) :
+                                (<>
+                                    <h4>There are no available posts at this time, please come back later</h4>
+                                </>)}
+
+                        </>)
+                    }
                 </Suspense>
             </div>
         </>

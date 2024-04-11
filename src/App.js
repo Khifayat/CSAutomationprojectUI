@@ -9,6 +9,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from './pages/LoginPage'
 import UserDashboardPage from './pages/UserDashboardPage'
 import Lobby from "./pages/Lobby";
+import PageNotFound from './pages/PageNotFound'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/register" element={<RegistrationPage/> } />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/dashboard" element={<UserDashboardPage/>} />
+              <Route path='*' element={<PageNotFound/>}/>
           </Routes>
       </Router>
   );
