@@ -1,0 +1,30 @@
+.noPostsMessage {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.dashboardContainer {
+    background: #154734;
+    color: #D29F13;
+    text-emphasis-color: #D29F13;
+    max-width: 60%;
+    margin: 0 auto;
+    align: left;
+    align-self: right;
+    justify-content: right;
+  }
+  
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    body {
+        background: #154734; 
+    }
+
+    .dashboardContainer {
+        max-width: 100%; 
+        margin: 0; 
+        height: 100vh; 
+        padding: 20px; /* Optional: for some inner spacing */
+        box-sizing: border-box; /* Include padding in width/height calculation */
+    }
+}
