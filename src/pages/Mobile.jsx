@@ -1,14 +1,14 @@
 import React, { useState, useEffect, Suspense } from "react";
 import AppNavbar from "../components/AppNavbar";
 import PostsCard from "../components/PostsCard";
-import { getLatestPosts } from "../services/dbservices/postservices/PostFunctions";
+import { getLatestPosts, getApprovedPosts } from "../services/dbservices/postservices/PostFunctions";
 
 function Mobile() {
 
     const [posts, setPosts] = useState(null)
 
     const getPosts = async () => {
-        let response = await getLatestPosts()
+        let response = await getApprovedPosts()
             .then(function (response) {
                 return response.data
             })

@@ -1,16 +1,16 @@
-import * as React from 'react';
+import React from 'react';
+import '../css/PostCard.css'; 
 
-const PostsCard = ({post}) =>{  
-    return (
-      
-        <div style={{backgroundColor:"#c8c9c7", border:"solid #D29F13", minHeight:"600px", height:"600px"}} class="card shadow p-3 ml-1">
-        <div class="card-body">
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-          <p align = "right">{post.creationDateTime.substring(0, 10)}</p>
-          {/*<p>{post.creationDate}</p>*/}
-        </div>
+const PostsCard = ({ post }) => {
+  return (
+    <div className="card shadow p-3 ml-1">
+      <div className="card-body">
+        <h3>{post.title}</h3>
+        {post.imgURL && <img src={post.imgURL} alt="Post" />} {/* Render image if imageUrl exists */}
+        <p className="description">{post.description}</p>
+        <p align="right">{post.creationDateTime.substring(0, 10)}</p>
       </div>
+    </div>
   );
 }
 

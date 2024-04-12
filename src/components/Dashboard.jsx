@@ -64,6 +64,7 @@ function Dashboard({post, role }) {
     <div style={{ backgroundColor: "#c8c9c7", border: "solid #D29F13", minHeight: "500px" }} class="card shadow p-3 ml-1">
       <div class="card-body">
         <h3>{post.title}</h3>
+        {post.imgURL && <img src={post.imgURL} alt="Post" />} {/* Render image if imageUrl exists */}
         <p>{post.description}</p>
         <p align="right">{post.creationDateTime.substring(0, 10)}</p>
         <p>{(role === "ADMIN") ? (
