@@ -46,8 +46,6 @@ function PostForm() {
                 if (error) {
                     console.log(error)
                     setShow(true)
-                } else {
-                    // window.location.reload()
                 }
             })
         window.location.reload()
