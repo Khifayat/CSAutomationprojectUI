@@ -47,9 +47,10 @@ function PostForm() {
                     console.log(error)
                     setShow(true)
                 } else {
-                    window.location.reload()
+                    // window.location.reload()
                 }
             })
+        window.location.reload()
             
     }
     const handleShow = () => setShow(true);
