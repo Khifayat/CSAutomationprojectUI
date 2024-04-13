@@ -48,16 +48,6 @@ export default function UserDashboardPage() {
   return (
     <>
       <AppNavbar isLobbyTv={false} />
-<<<<<<< HEAD
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className="dashboardContainer">
-          {!loggedInUser ? (
-            <h1 className='loginError'>You must be logged in to view this dashboard</h1>
-          ) : loggedInUser.role === "FACULTY" ? (
-            <FacultyView approvedPosts={approvedPosts} deniedPosts={deniedPosts} pendingPosts={pendingPosts} />
-          ) : (
-            <AdminView pendingPostCount={pendingPostCount} posts={pendingPosts} />
-=======
       < Suspense fallback={<div>Loading...</div>}>
         <div
           style={{
@@ -142,7 +132,6 @@ export default function UserDashboardPage() {
               )}
             </>
           )
->>>>>>> exceptionhandling
           )}
         </div>
       </Suspense>

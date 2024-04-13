@@ -22,7 +22,6 @@ function PostForm() {
         startTime: "",
     }
     //there is a better way, but i dont have time to figure it
-    const [selectedDate, setSelectedDate] = useState(null)
     const [selectedTime, setSelectedTime] = useState(null)
     const [postTitle, setPostTitle] = useState()
     const [postDescription, setPostDescription] = useState()
