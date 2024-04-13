@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 let stompClient
 
-function Dashboard({post, role }) {
+function Dashboard({ post, role }) {
   const [connected, setConnected] = useState(null);
   async function handStatusChange(event) {
     let statusString = event.target.value
@@ -23,7 +23,7 @@ function Dashboard({post, role }) {
     window.location.reload()
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     connect()
   }, [])
 
@@ -36,26 +36,16 @@ function Dashboard({post, role }) {
   }
 
   const onError = (error) => {
-    try {
-      console.log(error)
-    } catch {
-      console.log(error)
-    }
+    console.log(error)
   }
   const onConncted = () => {
     setConnected(true)
-    stompClient.subscribe('/topic/public', onMessageReceived)
-    console.log("Connection succesful")
-  }
-  const onMessageReceived = (payload) => {
-    console.log("message has been received" + payload.data)
-    
   }
   const sendValue = () => {
-    if (stompClient && connected){
+    if (stompClient && connected) {
       post.author = null
       post.status = 'APPROVED'
-      console.log("sending " + JSON.stringify(post) +  "over websocket")
+      console.log("sending " + JSON.stringify(post) + "over websocket")
       stompClient.send("/app/post.send", {}, JSON.stringify(post))
     }
   }
