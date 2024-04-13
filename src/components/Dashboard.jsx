@@ -16,10 +16,10 @@ function Dashboard({ post, role }) {
       .catch(function (error) {
         console.log(error)
       })
-    if (statusString === 'APPROVED') {
-      console.log("sending ... ")
-      sendValue()
-    }
+      if(statusString === 'APPROVED'){
+        console.log("sending ... ")
+        sendValue()
+      }
     window.location.reload()
   }
 

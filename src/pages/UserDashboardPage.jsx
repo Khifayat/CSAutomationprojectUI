@@ -48,6 +48,7 @@ export default function UserDashboardPage() {
   return (
     <>
       <AppNavbar isLobbyTv={false} />
+<<<<<<< HEAD
       <Suspense fallback={<div>Loading...</div>}>
         <div className="dashboardContainer">
           {!loggedInUser ? (
@@ -56,6 +57,92 @@ export default function UserDashboardPage() {
             <FacultyView approvedPosts={approvedPosts} deniedPosts={deniedPosts} pendingPosts={pendingPosts} />
           ) : (
             <AdminView pendingPostCount={pendingPostCount} posts={pendingPosts} />
+=======
+      < Suspense fallback={<div>Loading...</div>}>
+        <div
+          style={{
+            background: "#154734",
+            color: "#D29F13",
+            textEmphasisColor: "#D29F13",
+            maxWidth: "60%",
+            margin: "0 auto",
+            align: "left",
+            alignSelf: "right",
+            justifyContent: "right"
+          }}>
+          {(loggedInUser === null) ? (
+            <h1 className='loginError' >  You must be logged in to view faculty dashboard</h1>
+          ) : ((loggedInUser.role === "FACULTY") ? (
+            <div
+            >
+              <div>
+                <div style={{
+                  float: "left"
+                }}>
+                  <PostForm />
+                </div>
+                <div style={{
+                  float: "right"
+                }}>
+                  <EventForm />
+                </div>
+              </div>
+              <div>
+                <Tabs
+                  defaultActiveKey="posts-approved"
+                  id="justify-tab-example"
+                  className="mb-3"
+                  justify
+                  style={{
+                    background: "#154734",
+                    color: "#D29F13",
+                    textEmphasisColor: "#D29F13",
+                    display: "flex",
+                    maxWidth: "80%",
+                    justifyContent: "center",
+                    margin: "0 auto"
+                  }}
+                >
+                  <Tab eventKey="posts-pending"
+                    title="Pending Posts"
+                  >
+                    {(pendingPosts.length > 0) ?
+                      (<> {pendingPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are pending will show here</h1>
+                      )}
+
+                  </Tab>
+                  <Tab eventKey="posts-approved" title="Approved Posts">
+                    {(approvedPosts.length > 0) ?
+                      (<> {approvedPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are approved will show here</h1>
+                      )}
+                  </Tab>
+                  <Tab eventKey="posts-denied" title="Denied Posts">
+                    {(deniedPosts.length > 0) ?
+                      (<> {deniedPosts?.map((post) =>
+                        <Dashboard post={post} />)}</>
+                      ) : (
+                        <h1>Posts that are denied will show here</h1>
+                      )}
+                  </Tab>
+                </Tabs>
+              </div>
+            </div>
+          ) : (
+            <>{(posts.length > 0) ?
+              (<> {posts?.map((post) =>
+                <Dashboard post={post} role = "ADMIN" />)}</>
+              ) : (
+                <h1>Posts that are pending will show here</h1>
+              )}
+            </>
+          )
+>>>>>>> exceptionhandling
           )}
         </div>
       </Suspense>
